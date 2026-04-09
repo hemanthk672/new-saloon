@@ -34,7 +34,7 @@ export default function Navbar() {
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-4 flex items-center justify-between">
+      <div className="w-full px-6 md:px-12 lg:px-20 flex items-center justify-between">
         <button
           onClick={() => handleNav('#home')}
           className="flex items-center gap-2 group"

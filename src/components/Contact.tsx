@@ -65,6 +65,11 @@ export default function Contact() {
     ]);
     setLoading(false);
     setToast(true);
+
+    // Notify admin via WhatsApp
+    const waMsg = `🔔 *New Booking Request!*\n\n👤 *Name:* ${form.name.trim()}\n📞 *Phone:* ${form.phone.trim()}\n✂️ *Service:* ${form.service}\n🕐 *Preferred Time:* ${form.preferred_time}${form.message.trim() ? `\n💬 *Message:* ${form.message.trim()}` : ''}`;
+    window.open(`https://wa.me/918121212945?text=${encodeURIComponent(waMsg)}`, '_blank');
+
     setForm({ name: '', phone: '', service: '', preferred_time: '', message: '' });
     setErrors({});
   };
@@ -74,7 +79,7 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-16 bg-primary">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="w-full px-6 md:px-12 lg:px-20">
         <div className="text-center mb-10">
           <p className="text-accent text-xs tracking-widest uppercase font-medium mb-2">
             Get In Touch

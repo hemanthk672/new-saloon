@@ -48,7 +48,7 @@ const reviews = [
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-16 bg-bg-soft">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="w-full px-6 md:px-12 lg:px-20">
         <div className="text-center mb-10">
           <p className="text-accent text-xs tracking-widest uppercase font-medium mb-2">
             Client Love

@@ -33,7 +33,7 @@ const highlights = [
 export default function About() {
   return (
     <section id="about" className="py-16 bg-bg-soft">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="w-full px-6 md:px-12 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-accent text-xs tracking-widest uppercase font-medium mb-2">
