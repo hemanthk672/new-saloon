@@ -77,7 +77,7 @@ export default function Hero() {
         </div>
 
         {/* Right — salon image */}
-        <div className="hidden md:block w-full max-w-sm lg:max-w-md shrink-0">
+        {/* <div className="hidden md:block w-full max-w-sm lg:max-w-md shrink-0">
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-glass">
             <img
               src="https://lh3.googleusercontent.com/p/AF1QipNexi_Ws6lSt_d47VyMlNq4AIhKfmZs_i-oZ6Gx=s1360-w1360-h1020-rw"
@@ -85,7 +85,7 @@ export default function Hero() {
               className="w-full h-full object-cover opacity-50"
             />
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
