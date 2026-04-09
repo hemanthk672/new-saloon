@@ -1,49 +1,5 @@
 import { Star, Quote } from 'lucide-react';
-
-const reviews = [
-  {
-    name: 'Arjun Reddy',
-    initials: 'AR',
-    rating: 5,
-    text: 'Absolutely love this place! The staff is super friendly, and my hair looks amazing after every visit. Best salon in Vizag hands down.',
-    service: 'Haircut & Styling',
-  },
-  {
-    name: 'Priya Sharma',
-    initials: 'PS',
-    rating: 5,
-    text: 'Went for a hair spa and the results were incredible. My hair feels so soft and healthy. The ambience is so premium and relaxing.',
-    service: 'Hair Spa',
-  },
-  {
-    name: 'Karthik Nair',
-    initials: 'KN',
-    rating: 5,
-    text: 'Got a beard trim and haircut — the precision is outstanding! The barber really listens to what you want and delivers perfectly.',
-    service: 'Grooming',
-  },
-  {
-    name: 'Divya Rao',
-    initials: 'DR',
-    rating: 5,
-    text: 'The balayage they did for me was stunning. The color looks so natural and the technique is clearly professional. Will be back!',
-    service: 'Hair Color',
-  },
-  {
-    name: 'Rohith Varma',
-    initials: 'RV',
-    rating: 5,
-    text: 'Very clean, well-maintained salon with skilled professionals. Reasonable pricing for the quality of service. Highly recommended!',
-    service: 'Facial',
-  },
-  {
-    name: 'Sneha Pillai',
-    initials: 'SP',
-    rating: 5,
-    text: 'Had my bridal makeup done here. They were super professional, listened to all my preferences, and the result was beyond expectations.',
-    service: 'Makeup',
-  },
-];
+import { salon } from '../config/salons';
 
 export default function Testimonials() {
   return (
@@ -58,12 +14,12 @@ export default function Testimonials() {
           </h2>
           <div className="w-12 h-0.5 bg-accent mx-auto mt-3" />
           <p className="text-secondary/60 text-sm mt-3">
-            4.8 stars · 1500+ verified Google reviews
+            {salon.rating} stars · {salon.reviewCount} verified Google reviews
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {reviews.map((review) => (
+          {salon.reviews.map((review) => (
             <div
               key={review.name}
               className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-gold transition-shadow duration-300 flex flex-col"

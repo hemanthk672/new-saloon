@@ -1,4 +1,5 @@
 import { Phone, CalendarCheck, Star } from 'lucide-react';
+import { salon } from '../config/salons';
 
 export default function Hero() {
   const scrollTo = (href: string) => {
@@ -31,7 +32,7 @@ export default function Hero() {
               ))}
             </div>
             <span className="text-accent text-sm font-medium">
-              4.8 · 1500+ Reviews
+              {salon.rating} · {salon.reviewCount} Reviews
             </span>
           </div>
 
@@ -43,9 +44,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-white/70 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
-            Visakhapatnam's premier grooming destination. Experience luxury
-            haircare, transformative styling, and a salon ambience crafted for
-            those who value the finest.
+            {salon.hero.subtitle}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
@@ -57,20 +56,16 @@ export default function Hero() {
               Book Appointment
             </button>
             <a
-              href="tel:+918121212945"
+              href={`tel:+${salon.phoneRaw}`}
               className="flex items-center justify-center gap-2 px-7 py-3.5 border border-white/30 hover:border-accent text-white hover:text-accent font-medium rounded transition-all duration-200 text-sm"
             >
               <Phone size={17} />
-              +91 81212 12945
+              {salon.phone}
             </a>
           </div>
 
           <div className="mt-12 flex flex-wrap gap-8">
-            {[
-              { value: '1500+', label: 'Happy Clients' },
-              { value: '4.8★', label: 'Average Rating' },
-              { value: '5+', label: 'Years Serving Vizag' },
-            ].map((stat) => (
+            {salon.hero.stats.map((stat) => (
               <div key={stat.label}>
                 <div className="font-playfair text-2xl font-bold text-accent">
                   {stat.value}
@@ -86,7 +81,7 @@ export default function Hero() {
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-glass">
             <img
               src="https://lh3.googleusercontent.com/p/AF1QipNexi_Ws6lSt_d47VyMlNq4AIhKfmZs_i-oZ6Gx=s1360-w1360-h1020-rw"
-              alt="The Vizag Hair Company salon interior"
+              alt={`${salon.name} salon interior`}
               className="w-full h-full object-cover opacity-50"
             />
           </div>

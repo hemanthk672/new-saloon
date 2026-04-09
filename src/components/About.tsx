@@ -1,34 +1,8 @@
 import { Users, BadgeCheck, Heart, TrendingUp } from 'lucide-react';
+import { salon } from '../config/salons';
 
-const stats = [
-  { value: '1500+', label: 'Happy Customers' },
-  { value: '4.8', label: 'Google Rating' },
-  { value: '5+', label: 'Years Experience' },
-  { value: '6+', label: 'Expert Stylists' },
-];
-
-const highlights = [
-  {
-    icon: Users,
-    title: 'Friendly & Skilled Staff',
-    desc: 'Our trained professionals stay updated with the latest trends and techniques to give you the best results.',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Premium Ambience',
-    desc: 'A luxurious, clean, and relaxing environment designed to make every visit a memorable experience.',
-  },
-  {
-    icon: Heart,
-    title: 'Affordable Pricing',
-    desc: 'Premium quality services at honest prices — we believe great hair shouldn\'t cost a fortune.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Latest Trends',
-    desc: 'From Korean cuts to global color techniques, we bring world-class styles to Visakhapatnam.',
-  },
-];
+// Keep icon pool — mapped positionally to the highlights array
+const highlightIcons = [Users, BadgeCheck, Heart, TrendingUp];
 
 export default function About() {
   return (
@@ -40,24 +14,19 @@ export default function About() {
               Our Story
             </p>
             <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary leading-tight mb-4">
-              Vizag's Most Trusted
+              {salon.about.heading}
               <br />
-              <span className="italic text-accent">Hair Studio</span>
+              <span className="italic text-accent">{salon.about.subHeading}</span>
             </h2>
             <p className="text-secondary/70 text-sm leading-relaxed mb-4">
-              Nestled in the heart of Yendada, The Vizag Hair Company was born from
-              a passion for exceptional grooming and an obsession with detail. We
-              combine international techniques with personalised care to deliver
-              transformations that speak for themselves.
+              {salon.about.para1}
             </p>
             <p className="text-secondary/70 text-sm leading-relaxed mb-8">
-              Whether it's a quick trim or a complete style overhaul, every
-              client walks out feeling confident, refreshed, and looking their
-              absolute best.
+              {salon.about.para2}
             </p>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {stats.map((stat) => (
+              {salon.about.stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="text-center p-4 bg-white rounded-lg border border-gray-100 shadow-sm"
@@ -82,13 +51,13 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
               <div className="absolute bottom-4 left-4">
-                <span className="text-white/70 text-xs">Our Studio · Yendada, Vizag</span>
+                <span className="text-white/70 text-xs">Our Studio · {salon.city}</span>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              {highlights.map((item) => {
-                const Icon = item.icon;
+              {salon.about.highlights.map((item, i) => {
+                const Icon = highlightIcons[i % highlightIcons.length];
                 return (
                   <div
                     key={item.title}

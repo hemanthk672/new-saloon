@@ -1,10 +1,13 @@
 import { MapPin, Phone, Clock, Scissors, Instagram, Facebook } from 'lucide-react';
+import { salon } from '../config/salons';
 
 export default function Footer() {
   const scrollTo = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="bg-[#070A12] border-t border-white/5">
@@ -17,7 +20,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-playfair text-white font-bold text-sm">
-                  The Vizag Hair Company
+                  {salon.name}
                 </div>
                 <div className="text-accent text-xs tracking-wider">
                   Premium Salon
@@ -25,18 +28,17 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-white/40 text-xs leading-relaxed">
-              Visakhapatnam's most trusted hair studio, delivering premium styling
-              experiences since 2019.
+              {salon.footerBlurb}
             </p>
             <div className="flex gap-3 mt-4">
               <a
-                href="#"
+                href={salon.instagramUrl}
                 className="w-8 h-8 rounded-lg bg-white/5 hover:bg-accent/20 flex items-center justify-center text-white/40 hover:text-accent transition-all"
               >
                 <Instagram size={15} />
               </a>
               <a
-                href="#"
+                href={salon.facebookUrl}
                 className="w-8 h-8 rounded-lg bg-white/5 hover:bg-accent/20 flex items-center justify-center text-white/40 hover:text-accent transition-all"
               >
                 <Facebook size={15} />
@@ -77,23 +79,23 @@ export default function Footer() {
               <div className="flex gap-2">
                 <MapPin size={14} className="text-accent mt-0.5 flex-shrink-0" />
                 <span className="text-white/40 text-xs leading-relaxed">
-                  GITAM Medical, Varma Complex, College Rd, Yendada, Visakhapatnam 530045
+                  {salon.address.line1} {salon.address.line2}{salon.address.line3 ? ` ${salon.address.line3}` : ''} {salon.address.cityState} {salon.address.pincode}
                 </span>
               </div>
               <div className="flex gap-2">
                 <Phone size={14} className="text-accent mt-0.5 flex-shrink-0" />
                 <a
-                  href="tel:+918121212945"
+                  href={`tel:+${salon.phoneRaw}`}
                   className="text-white/40 hover:text-accent text-xs transition-colors"
                 >
-                  +91 81212 12945
+                  {salon.phone}
                 </a>
               </div>
               <div className="flex gap-2">
                 <Clock size={14} className="text-accent mt-0.5 flex-shrink-0" />
                 <div className="text-white/40 text-xs">
-                  <div>Mon–Sat: 10:00 AM – 8:00 PM</div>
-                  <div>Sunday: 10:00 AM – 6:00 PM</div>
+                  <div>{salon.hours.label}: {salon.hours.time}</div>
+                  {salon.hours.note && <div>{salon.hours.note}</div>}
                 </div>
               </div>
             </div>
@@ -102,10 +104,10 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
           <p className="text-white/25 text-xs">
-            © 2025 The Vizag Hair Company. All rights reserved.
+            © {currentYear} {salon.name}. All rights reserved.
           </p>
           <p className="text-white/25 text-xs">
-            Crafted with care · Yendada, Visakhapatnam
+            Crafted with care · {salon.city}
           </p>
         </div>
       </div>

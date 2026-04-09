@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MapPin, Phone, Clock, Send } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import Toast from './Toast';
+import { salon } from '../config/salons';
 
 const serviceOptions = [
   'Haircut & Styling',
@@ -68,7 +69,7 @@ export default function Contact() {
 
     // Notify admin via WhatsApp
     const waMsg = `🔔 *New Booking Request!*\n\n👤 *Name:* ${form.name.trim()}\n📞 *Phone:* ${form.phone.trim()}\n✂️ *Service:* ${form.service}\n🕐 *Preferred Time:* ${form.preferred_time}${form.message.trim() ? `\n💬 *Message:* ${form.message.trim()}` : ''}`;
-    window.open(`https://wa.me/918121212945?text=${encodeURIComponent(waMsg)}`, '_blank');
+    window.open(`https://wa.me/${salon.phoneRaw}?text=${encodeURIComponent(waMsg)}`, '_blank');
 
     setForm({ name: '', phone: '', service: '', preferred_time: '', message: '' });
     setErrors({});
@@ -104,9 +105,14 @@ export default function Contact() {
                   <div>
                     <div className="text-white text-sm font-medium mb-0.5">Address</div>
                     <div className="text-white/50 text-sm leading-relaxed">
-                      GITAM Medical, Varma Complex, College Rd,
+                      {salon.address.line1}
                       <br />
-                      Yendada, Visakhapatnam, AP 530045
+                      {salon.address.line2}
+                      {salon.address.line3 && (
+                        <><br />{salon.address.line3}</>
+                      )}
+                      <br />
+                      {salon.address.cityState} – {salon.address.pincode}
                     </div>
                   </div>
                 </div>
@@ -117,10 +123,10 @@ export default function Contact() {
                   <div>
                     <div className="text-white text-sm font-medium mb-0.5">Phone</div>
                     <a
-                      href="tel:+918121212945"
+                      href={`tel:+${salon.phoneRaw}`}
                       className="text-accent hover:text-accent-light text-sm transition-colors"
                     >
-                      +91 81212 12945
+                      {salon.phone}
                     </a>
                   </div>
                 </div>
@@ -133,11 +139,11 @@ export default function Contact() {
                       Opening Hours
                     </div>
                     <div className="text-white/50 text-sm">
-                      Mon – Sat: 10:00 AM – 8:00 PM
+                      {salon.hours.label}: {salon.hours.time}
                     </div>
-                    <div className="text-white/50 text-sm">
-                      Sunday: 10:00 AM – 6:00 PM
-                    </div>
+                    {salon.hours.note && (
+                      <div className="text-white/50 text-sm">{salon.hours.note}</div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -150,7 +156,7 @@ export default function Contact() {
                 height="100%"
                 frameBorder="0"
                 style={{ filter: 'invert(90%) hue-rotate(180deg)' }}
-                src="https://maps.google.com/maps?q=GITAM+Medical+Varma+Complex+Yendada+Visakhapatnam&output=embed"
+                src={`https://maps.google.com/maps?q=${salon.address.mapsQuery}&output=embed`}
               />
             </div>
           </div>

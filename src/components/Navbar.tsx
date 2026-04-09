@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Scissors } from 'lucide-react';
+import { salon } from '../config/salons';
 
 const navLinks = [
   { label: 'Home', href: '#home' },
@@ -44,10 +45,10 @@ export default function Navbar() {
           </div>
           <div className="leading-none">
             <span className="block font-playfair text-white font-bold text-sm tracking-wide">
-              The Vizag
+              {salon.nameShort}
             </span>
             <span className="block font-playfair text-accent text-xs tracking-widest uppercase">
-              Hair Company
+              {salon.tagline}
             </span>
           </div>
         </button>
